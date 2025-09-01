@@ -133,6 +133,24 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
 }
+.cta-button1 {
+    background: linear-gradient(45deg, #410bf1, #1ecff7);
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 90px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(53, 221, 255, 0.4);
+}
+.cta-button1:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(53, 248, 255, 0.6);
+}
 /* Services Section */
 .services {
     padding: 40px 0;
