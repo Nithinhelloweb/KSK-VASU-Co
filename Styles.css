@@ -9,23 +9,55 @@ body {
     color: #4aeae0;
     overflow-x: hidden;
 }
+
+/* Global Transition Enhancement */
+/* Added to ensure layout changes (like resizing grids) are smooth) */
+body, .header, .service-card, .product-card {
+    transition: all 0.3s ease-in-out; 
+}
+
+
 /* Header */
 .header {
     background: linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%);
     color: white;
     padding: 1px;
     position: fixed;
-    text-align: center;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
+/* NEW STYLES FOR ALIGNMENT */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Pushes content to the corners */
+    align-items: center;
+    padding: 10px 20px; /* Added padding for space on the sides */
+}
+
+.header-left {
+    text-align: left;
+    padding-top: 5px; 
+}
+
+.header-right {
+    display: flex; /* Use flexbox to stack tagline and phone number */
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right */
+    text-align: right;
+}
+/* END NEW STYLES FOR ALIGNMENT */
+
+
+/* Original #tagline styles adjusted to target the new element in the right div */
 #tagline {
-    font-size: 25px;
+    font-size: 18px; /* Slightly reduced font size for multi-line content */
     font-weight: bold;
-    text-align: center;
-    margin: 10px 0;
+    margin: 0;
+    padding-bottom: 3px; /* Space between tagline and phone number */
 
     /* Gradient text */
     background: linear-gradient(#b7ff00);
@@ -36,12 +68,13 @@ body {
     text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 
     /* Letter spacing for elegance */
-    letter-spacing: 2px;
+    letter-spacing: 1px; /* Reduced letter spacing for multi-line content */
 
     /* Animation for a soft shine */
     position: relative;
     display: inline-block;
     overflow: hidden;
+    line-height: 1.2; /* Tighter line spacing for the tagline */
 }
 
 #tagline::after {
@@ -57,26 +90,36 @@ body {
 
 @keyframes shine {
     0% { left: -100%; }
-    50% { left: 100%; }
+    55% { left: 100%; }
     100% { left: 100%; }
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .logo {
-    font-size: 30px;
-    padding-top: 15px;
+    font-size: 24px; /* Font size for the main company name */
+    padding-top: 0;
     font-weight: bold;
     color: yellow;
     -webkit-text-stroke: 0.5px #b33232;
-    text-align: center;
+    text-align: left; /* Align logo text to the left */
+    line-height: 1; /* Adjust to bring lines closer */
 }
+
+/* Smaller size for "ONLINE" */
+.online-text {
+    font-size: 0.6em; /* Set font size relative to the parent .logo (24px * 0.6 = 14.4px) */
+    font-weight: normal; /* Make it less bold than the main company name */
+    display: block; /* Ensure it starts on a new line (though the <br> does this too) */
+    letter-spacing: 2px; /* Add some spacing for readability */
+}
+
+/* Style for the separate phone number */
+.phone-number {
+    font-size: 14px; /* Smaller font size */
+    font-weight: bold;
+    color: white; /* White color for contrast */
+    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Subtle shadow for readability */
+}
+
 
 /* Hero Section */
 .hero {
@@ -89,9 +132,55 @@ body {
     justify-content: center;
     text-align: center;
     color: white;
-    position: relative;
+    position: relative; /* Essential for positioning the arrow */
     padding-top: 80px; /* pushes hero content below header */
 }
+
+/* Floating Down Arrow Button Styles */
+.scroll-down-btn {
+    position: absolute; /* Float relative to the hero section */
+    bottom: 20px; /* Position from the bottom */
+    right: 20px; /* Position from the right */
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: 
+        blink 1.5s infinite alternate, /* Blinking animation */
+        pulse 2s infinite; /* Gentle floating/scaling animation */
+    transition: background 0.3s ease;
+}
+
+.scroll-down-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.scroll-down-btn .arrow-icon {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Blinking Animation */
+@keyframes blink {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Floating/Pulse Animation (using the existing floating keyframe for consistency) */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
 @keyframes changeColor {
     0% { background-color: rgb(82, 236, 31); }
     25% { background-color: rgb(48, 221, 97); }
@@ -124,15 +213,43 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    /* MODIFIED: Make the transition more specific */
+    transition: padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
     display: inline-block;
     box-shadow: 0 4px 15px rgba(53, 255, 73, 0.4);
+    
+    /* ADDED: Define its default position */
+    position: static;
 }
+
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
 }
+
+/* --- NEW STYLES ADDED FOR FIXED BUTTON --- */
+.cta-button-fixed {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 998; /* Below header (1000) */
+    
+    /* Make it slightly smaller */
+    padding: 10px 25px;
+    font-size: 1rem;
+    
+    /* The 'top' property will be set by JavaScript */
+}
+
+/* Adjust the hover effect for the fixed state */
+.cta-button-fixed:hover {
+    transform: translateX(-50%) translateY(-3px); /* Keep the X transform */
+    box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
+}
+/* --- END NEW STYLES --- */
+
+
 .cta-button1 {
     background: linear-gradient(45deg, #410bf1, #1ecff7);
     color: white;
@@ -151,6 +268,27 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(53, 248, 255, 0.6);
 }
+
+.cta-buttondev {
+    background: linear-gradient(45deg, #0bf148, #f7921e);
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 90px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(53, 221, 255, 0.4);
+}
+.cta-buttondev:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(53, 248, 255, 0.6);
+}
+
 /* Services Section */
 .services {
     padding: 40px 0;
@@ -181,6 +319,7 @@ body {
 }
 .services-grid {
     display: grid;
+    /* On large screens, cards stay side-by-side */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
@@ -224,6 +363,7 @@ body {
 }
 .products-grid {
     display: grid;
+    /* On large screens, maintain 250px minimum width for products */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
@@ -247,6 +387,12 @@ body {
     justify-content: center;
     font-size: 3rem;
     color: #999;
+}
+.product-image img {
+    /* Ensure images scale correctly within the product card */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops image to cover the box without distortion */
 }
 .product-info {
     padding: 1.5rem;
@@ -393,32 +539,91 @@ body {
     }
 }
 /* Responsive Design */
+
+/* Small Devices (Default mobile styling is here - 768px and below) */
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
+    
+    /* Header (Stacks content for better view on small screens) */
+    .nav-container {
+        flex-direction: column; /* Stack items vertically on small screens */
+        padding: 10px 10px;
+    }
+    .header-left, .header-right {
+        width: 100%;
+        text-align: center; /* Center content when stacked */
+        padding: 5px 0;
+    }
+    /* Updated .header-right for mobile to center both elements when stacked */
+    .header-right {
+        align-items: center; 
+    }
+    .logo {
+        font-size: 20px;
+    }
+    .online-text {
+        font-size: 0.5em; /* Smaller on mobile */
     }
     #tagline {
-        font-size: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .phone-number {
+        font-size: 12px; /* Even smaller on mobile */
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding-top: 120px; /* Adjust for stacked header height */
     }
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
-    .about-content {
+    
+    /* Section Grids (Services and Products become single-column) */
+    .services-grid, .products-grid {
         grid-template-columns: 1fr;
     }
-    .contact-content {
+    
+    /* About and Contact Sections */
+    .about-content, .contact-content {
         grid-template-columns: 1fr;
+    }
+    .about-text {
+        order: 2; /* Put text below image on mobile */
+    }
+    .about-image {
+        order: 1;
+        height: 250px;
     }
     #textcolor {
         font-size: 25px;
     }
-    .about-image {
-        height: 250px;
+    .container {
+        padding: 0 1rem; /* Less padding on very small screens */
+    }
+    
+    /* FIX: Scroll Arrow for Mobile - explicit right-side positioning */
+    .scroll-down-btn {
+        right: 15px; /* Use a fixed small padding from the right edge */
+        left: auto; /* Ensure no conflict with center alignment */
+        transform: none; /* Disable the centering transform */
+        bottom: 15px;
     }
 }
+
+/* Medium Devices (Tablets, landscape phones - 992px and below) */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .about-content {
+        gap: 1.5rem;
+    }
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
