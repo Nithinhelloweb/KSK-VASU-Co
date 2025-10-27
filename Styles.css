@@ -604,7 +604,7 @@ body, .header, .service-card, .product-card {
         right: 15px; /* Use a fixed small padding from the right edge */
         left: auto; /* Ensure no conflict with center alignment */
         transform: none; /* Disable the centering transform */
-        bottom: 50px;
+        bottom: 120px;
     }
 }
 
