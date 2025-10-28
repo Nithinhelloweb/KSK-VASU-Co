@@ -558,7 +558,7 @@ body, .header, .service-card, .product-card {
         font-size: 0.5em; /* Smaller on mobile */
     }
     #tagline {
-        font-size: 18px;
+        font-size: 20px;
         text-align: center;
     }
     .phone-number {
