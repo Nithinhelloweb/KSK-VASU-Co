@@ -44,37 +44,31 @@ body, .header, .service-card, .product-card {
 }
 
 .header-right {
-    display: flex; /* Use flexbox to stack tagline and phone number */
+    display: flex; 
     flex-direction: column;
-    align-items: flex-end; /* Align items to the right */
+    align-items: flex-end; 
     text-align: right;
 }
-/* END NEW STYLES FOR ALIGNMENT */
 
-
-/* Original #tagline styles adjusted to target the new element in the right div */
+/* //Reflect animation
 #tagline {
-    font-size: 18px; /* Slightly reduced font size for multi-line content */
+    font-size: 18px; 
     font-weight: bold;
     margin: 0;
-    padding-bottom: 3px; /* Space between tagline and phone number */
+    padding-bottom: 3px; 
 
-    /* Gradient text */
-    background: linear-gradient(#b7ff00);
+    background: linear-gradient(#ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
-    /* Smooth shadow */
     text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 
-    /* Letter spacing for elegance */
-    letter-spacing: 1px; /* Reduced letter spacing for multi-line content */
+    letter-spacing: 1px; 
 
-    /* Animation for a soft shine */
     position: relative;
     display: inline-block;
     overflow: hidden;
-    line-height: 1.2; /* Tighter line spacing for the tagline */
+    line-height: 1.2; 
 }
 
 #tagline::after {
@@ -92,7 +86,7 @@ body, .header, .service-card, .product-card {
     0% { left: -100%; }
     55% { left: 100%; }
     100% { left: 100%; }
-}
+} */
 
 .logo {
     font-size: 24px; /* Font size for the main company name */
@@ -114,9 +108,9 @@ body, .header, .service-card, .product-card {
 
 /* Style for the separate phone number */
 .phone-number {
-    font-size: 14px; /* Smaller font size */
+    font-size: 16px; /* Smaller font size */
     font-weight: bold;
-    color: white; /* White color for contrast */
+    color: rgb(255, 255, 255); /* White color for contrast */
     text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Subtle shadow for readability */
 }
 
@@ -139,7 +133,7 @@ body, .header, .service-card, .product-card {
 /* Floating Down Arrow Button Styles */
 .scroll-down-btn {
     position: absolute; /* Float relative to the hero section */
-    bottom: 20px; /* Position from the bottom */
+    bottom: 120px; /* Position from the bottom */
     right: 20px; /* Position from the right */
     width: 50px;
     height: 50px;
@@ -564,11 +558,11 @@ body, .header, .service-card, .product-card {
         font-size: 0.5em; /* Smaller on mobile */
     }
     #tagline {
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
     }
     .phone-number {
-        font-size: 12px; /* Even smaller on mobile */
+        font-size: 14px; /* Even smaller on mobile */
     }
     
     /* Hero Section */
@@ -610,7 +604,7 @@ body, .header, .service-card, .product-card {
         right: 15px; /* Use a fixed small padding from the right edge */
         left: auto; /* Ensure no conflict with center alignment */
         transform: none; /* Disable the centering transform */
-        bottom: 15px;
+        bottom: 120px;
     }
 }
 
