@@ -184,9 +184,7 @@ body, .header, .service-card, .product-card {
 .hero-content {
     max-width: 800px;
     padding: 0 2rem;
-    animation: 
-        fadeInUp 1s ease-out,
-        floating 3s ease-in-out 0.1s infinite; 
+    animation: fadeInUp 1s ease-out;
 }
 .hero h1 {
     font-size: 3.5rem;
