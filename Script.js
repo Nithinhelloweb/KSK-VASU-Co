@@ -20,25 +20,24 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
 
+    // This part for the header background is fine
     if (window.scrollY > 100) {
         header.style.background = 'rgba(8, 0, 255, 0.95)';
     } else {
         header.style.background = 'linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%)';
     }
 
-    const ctaButton = document.querySelector('.cta-button');
-    const heroSection = document.querySelector('.hero');
+    // Select the button by its ID
+    const ctaButton = document.querySelector('#sticky-cta'); 
     
-    if (ctaButton && heroSection && header) {
-        const heroHeight = heroSection.offsetHeight;
-        const headerHeight = header.offsetHeight;
-        
-        if (window.scrollY > (heroHeight - headerHeight)) {
+    if (ctaButton) {
+        // Use 100px as the trigger
+        if (window.scrollY > 100) {
             ctaButton.classList.add('cta-button-fixed');
-            ctaButton.style.top = `${headerHeight + 10}px`; 
+            // We NO LONGER set ctaButton.style.top here
         } else {
             ctaButton.classList.remove('cta-button-fixed');
-            ctaButton.style.top = ''; // Remove the inline style
+            // We NO LONGER set ctaButton.style.top here
         }
     }
 });
