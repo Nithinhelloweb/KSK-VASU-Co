@@ -228,12 +228,15 @@ body, .header, .service-card, .product-card {
     transform: translateX(-50%);
     z-index: 998; /* Below header (1000) */
     
-    /* --- THIS IS THE NEW POSITION --- */
+    /* Position at the bottom */
     bottom: 20px; 
     
-    /* Make it slightly smaller */
-    padding: 10px 25px;
-    font-size: 1rem;
+    /* --- THESE STYLES MAKE IT BIGGER --- */
+    padding: 18px 35px;
+    font-size: 1.2rem;
+    
+    /* Ensure the transition is smooth */
+    transition: padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 /* Adjust the hover effect for the fixed state */
@@ -605,6 +608,10 @@ body, .header, .service-card, .product-card {
         left: auto; /* Ensure no conflict with center alignment */
         transform: none; /* Disable the centering transform */
         bottom: 120px;
+    }
+
+    .cta-button-fixed{
+        padding: 18px 20px;
     }
 }
 
