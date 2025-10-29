@@ -93,7 +93,6 @@ body, .header, .service-card, .product-card {
     padding-top: 0;
     font-weight: bold;
     color: yellow;
-    -webkit-text-stroke: 0.5px #b33232;
     text-align: left; /* Align logo text to the left */
     line-height: 1; /* Adjust to bring lines closer */
 }
@@ -229,11 +228,12 @@ body, .header, .service-card, .product-card {
     transform: translateX(-50%);
     z-index: 998; /* Below header (1000) */
     
+    /* --- THIS IS THE NEW POSITION --- */
+    bottom: 20px; 
+    
     /* Make it slightly smaller */
     padding: 10px 25px;
     font-size: 1rem;
-    
-    /* The 'top' property will be set by JavaScript */
 }
 
 /* Adjust the hover effect for the fixed state */
@@ -624,7 +624,7 @@ html {
 }
 /* Floating animation for hero */
 .hero-content {
-    animation: floating 3s ease-in-out infinite;
+    /* animation: floating 3s ease-in-out infinite; */ /* <-- THIS IS THE FIX */
 }
 @keyframes floating {
     0%, 100% { transform: translateY(0px); }
