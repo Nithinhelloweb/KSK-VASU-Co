@@ -206,13 +206,10 @@ body, .header, .service-card, .product-card {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    /* MODIFIED: Make the transition more specific */
     transition: padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
     display: inline-block;
     box-shadow: 0 4px 15px rgba(53, 255, 73, 0.4);
-    
-    /* ADDED: Define its default position */
     position: static;
 }
 
@@ -221,31 +218,35 @@ body, .header, .service-card, .product-card {
     box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
 }
 
-/* --- NEW STYLES ADDED FOR FIXED BUTTON --- */
 .cta-button-fixed {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 998; /* Below header (1000) */
-    
-    /* Position at the bottom */
+    z-index: 998;
     bottom: 20px; 
-    
-    /* --- THESE STYLES MAKE IT BIGGER --- */
-    padding: 18px 35px;
+    padding: 15px 30px;
     font-size: 1.2rem;
-    
-    /* Ensure the transition is smooth */
     transition: padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Adjust the hover effect for the fixed state */
-.cta-button-fixed:hover {
+#sticky-cta.cta-button-fixed:hover {
     transform: translateX(-50%) translateY(-3px); /* Keep the X transform */
     box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
 }
-/* --- END NEW STYLES --- */
 
+.cta-button-stopped {
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 998; 
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+#sticky-cta.cta-button-stopped:hover {
+    transform: translateX(-50%) translateY(-3px); 
+    box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
+}
 
 .cta-button1 {
     background: linear-gradient(45deg, #410bf1, #1ecff7);
@@ -610,12 +611,16 @@ body, .header, .service-card, .product-card {
         bottom: 120px;
     }
 
-    .cta-button-fixed{
-        padding: 18px 20px;
+    .cta-button-fixed {
+        padding: 15px 27px;
     }
+    
+    .cta-button-stopped {
+        padding: 15px 27px;
+    }
+
 }
 
-/* Medium Devices (Tablets, landscape phones - 992px and below) */
 @media (max-width: 992px) {
     .hero h1 {
         font-size: 3rem;
