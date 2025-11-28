@@ -17,7 +17,6 @@ body, .header, .service-card, .product-card {
 }
 
 
-/* Header */
 .header {
     background: linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%);
     color: white;
@@ -28,14 +27,14 @@ body, .header, .service-card, .product-card {
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
-/* NEW STYLES FOR ALIGNMENT */
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Pushes content to the corners */
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Added padding for space on the sides */
+    padding: 10px 20px; 
 }
 
 .header-left {
@@ -89,52 +88,53 @@ body, .header, .service-card, .product-card {
 } */
 
 .logo {
-    font-size: 24px; /* Font size for the main company name */
+    font-size: 24px; 
     padding-top: 0;
     font-weight: bold;
     color: yellow;
-    -webkit-text-stroke: 0.5px #b33232;
-    text-align: left; /* Align logo text to the left */
-    line-height: 1; /* Adjust to bring lines closer */
+    text-align: left; 
+    line-height: 1; 
 }
 
-/* Smaller size for "ONLINE" */
 .online-text {
-    font-size: 0.6em; /* Set font size relative to the parent .logo (24px * 0.6 = 14.4px) */
-    font-weight: normal; /* Make it less bold than the main company name */
-    display: block; /* Ensure it starts on a new line (though the <br> does this too) */
-    letter-spacing: 2px; /* Add some spacing for readability */
+    font-size: 0.6em; 
+    font-weight: normal; 
+    display: block; 
+    letter-spacing: 2px; 
 }
 
-/* Style for the separate phone number */
 .phone-number {
-    font-size: 16px; /* Smaller font size */
+    font-size: 16px; 
     font-weight: bold;
-    color: rgb(255, 255, 255); /* White color for contrast */
-    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Subtle shadow for readability */
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
-
-/* Hero Section */
 .hero {
-    background: linear-gradient(135deg,  #6ad3e6 0%, #0800ff 100%);
-    background-size: cover;
+    background: linear-gradient(135deg,  #00ffd9 0%, #0800ff 100%);
+    background-size: 400% 400%; 
     background-position: center;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    position: relative; /* Essential for positioning the arrow */
-    padding-top: 80px; /* pushes hero content below header */
+    position: relative; 
+    padding-top: 80px; 
+    animation: moveGradient 15s ease infinite;
+    box-shadow: inset 0 0 120px rgba(0,0,0,0.3);
+}
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Floating Down Arrow Button Styles */
 .scroll-down-btn {
-    position: absolute; /* Float relative to the hero section */
-    bottom: 120px; /* Position from the bottom */
-    right: 20px; /* Position from the right */
+    position: absolute; 
+    bottom: 120px; 
+    right: 20px;
     width: 50px;
     height: 50px;
     background: rgba(255, 255, 255, 0.2);
@@ -148,8 +148,8 @@ body, .header, .service-card, .product-card {
     z-index: 999;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     animation: 
-        blink 1.5s infinite alternate, /* Blinking animation */
-        pulse 2s infinite; /* Gentle floating/scaling animation */
+        blink 1.5s infinite alternate, 
+        pulse 2s infinite; 
     transition: background 0.3s ease;
 }
 
@@ -163,18 +163,15 @@ body, .header, .service-card, .product-card {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
-/* Blinking Animation */
 @keyframes blink {
     0% { opacity: 0.5; }
     100% { opacity: 1; }
 }
 
-/* Floating/Pulse Animation (using the existing floating keyframe for consistency) */
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
-
 @keyframes changeColor {
     0% { background-color: rgb(82, 236, 31); }
     25% { background-color: rgb(48, 221, 97); }
@@ -198,6 +195,7 @@ body, .header, .service-card, .product-card {
     margin-bottom: 2rem;
     opacity: 0.9;
 }
+
 .cta-button {
     background: linear-gradient(45deg, #410bf1, #1ecff7);
     color: white;
@@ -207,13 +205,10 @@ body, .header, .service-card, .product-card {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    /* MODIFIED: Make the transition more specific */
     transition: padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
     display: inline-block;
     box-shadow: 0 4px 15px rgba(53, 255, 73, 0.4);
-    
-    /* ADDED: Define its default position */
     position: static;
 }
 
@@ -222,27 +217,35 @@ body, .header, .service-card, .product-card {
     box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
 }
 
-/* --- NEW STYLES ADDED FOR FIXED BUTTON --- */
 .cta-button-fixed {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 998; /* Below header (1000) */
-    
-    /* Make it slightly smaller */
-    padding: 10px 25px;
-    font-size: 1rem;
-    
-    /* The 'top' property will be set by JavaScript */
+    z-index: 998;
+    bottom: 20px; 
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    transition: padding 0.3s ease, font-size 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Adjust the hover effect for the fixed state */
-.cta-button-fixed:hover {
-    transform: translateX(-50%) translateY(-3px); /* Keep the X transform */
+#sticky-cta.cta-button-fixed:hover {
+    transform: translateX(-50%) translateY(-3px);
     box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
 }
-/* --- END NEW STYLES --- */
 
+.cta-button-stopped {
+    position: absolute; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 998; 
+    padding: 15px 30px;
+    font-size: 1.2rem;
+}
+
+#sticky-cta.cta-button-stopped:hover {
+    transform: translateX(-50%) translateY(-3px); 
+    box-shadow: 0 6px 20px rgba(53, 255, 107, 0.6);
+}
 
 .cta-button1 {
     background: linear-gradient(45deg, #410bf1, #1ecff7);
@@ -313,7 +316,6 @@ body, .header, .service-card, .product-card {
 }
 .services-grid {
     display: grid;
-    /* On large screens, cards stay side-by-side */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
@@ -357,7 +359,6 @@ body, .header, .service-card, .product-card {
 }
 .products-grid {
     display: grid;
-    /* On large screens, maintain 250px minimum width for products */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
@@ -383,10 +384,9 @@ body, .header, .service-card, .product-card {
     color: #999;
 }
 .product-image img {
-    /* Ensure images scale correctly within the product card */
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Crops image to cover the box without distortion */
+    object-fit: cover; 
 }
 .product-info {
     padding: 1.5rem;
@@ -532,22 +532,19 @@ body, .header, .service-card, .product-card {
         transform: translateY(0);
     }
 }
-/* Responsive Design */
 
-/* Small Devices (Default mobile styling is here - 768px and below) */
 @media (max-width: 768px) {
     
-    /* Header (Stacks content for better view on small screens) */
     .nav-container {
-        flex-direction: column; /* Stack items vertically on small screens */
+        flex-direction: column; 
         padding: 10px 10px;
     }
     .header-left, .header-right {
         width: 100%;
-        text-align: center; /* Center content when stacked */
+        text-align: center;
         padding: 5px 0;
     }
-    /* Updated .header-right for mobile to center both elements when stacked */
+
     .header-right {
         align-items: center; 
     }
@@ -555,19 +552,18 @@ body, .header, .service-card, .product-card {
         font-size: 20px;
     }
     .online-text {
-        font-size: 0.5em; /* Smaller on mobile */
+        font-size: 0.5em; 
     }
     #tagline {
         font-size: 20px;
         text-align: center;
     }
     .phone-number {
-        font-size: 14px; /* Even smaller on mobile */
+        font-size: 14px;
     }
     
-    /* Hero Section */
     .hero {
-        padding-top: 120px; /* Adjust for stacked header height */
+        padding-top: 120px; 
     }
     .hero h1 {
         font-size: 2rem;
@@ -576,17 +572,15 @@ body, .header, .service-card, .product-card {
         font-size: 1rem;
     }
     
-    /* Section Grids (Services and Products become single-column) */
     .services-grid, .products-grid {
         grid-template-columns: 1fr;
     }
     
-    /* About and Contact Sections */
     .about-content, .contact-content {
         grid-template-columns: 1fr;
     }
     .about-text {
-        order: 2; /* Put text below image on mobile */
+        order: 2; 
     }
     .about-image {
         order: 1;
@@ -596,19 +590,26 @@ body, .header, .service-card, .product-card {
         font-size: 25px;
     }
     .container {
-        padding: 0 1rem; /* Less padding on very small screens */
+        padding: 0 1rem; 
     }
     
-    /* FIX: Scroll Arrow for Mobile - explicit right-side positioning */
     .scroll-down-btn {
-        right: 15px; /* Use a fixed small padding from the right edge */
-        left: auto; /* Ensure no conflict with center alignment */
-        transform: none; /* Disable the centering transform */
+        right: 15px; 
+        left: auto; 
+        transform: none; 
         bottom: 120px;
     }
+
+    .cta-button-fixed {
+        padding: 15px 27px;
+    }
+    
+    .cta-button-stopped {
+        padding: 15px 27px;
+    }
+
 }
 
-/* Medium Devices (Tablets, landscape phones - 992px and below) */
 @media (max-width: 992px) {
     .hero h1 {
         font-size: 3rem;
@@ -624,7 +625,7 @@ html {
 }
 /* Floating animation for hero */
 .hero-content {
-    animation: floating 3s ease-in-out infinite;
+    /* animation: floating 3s ease-in-out infinite; <-- THIS IS THE FIX */
 }
 @keyframes floating {
     0%, 100% { transform: translateY(0px); }

@@ -19,30 +19,57 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
 
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
-
+    
+    // --- Header Background Change (This is fine) ---
     if (window.scrollY > 100) {
-        header.style.background = 'rgba(8, 0, 255, 0.95)';
+        header.style.background = 'linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%)';
     } else {
         header.style.background = 'linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%)';
     }
 
-    const ctaButton = document.querySelector('.cta-button');
-    const heroSection = document.querySelector('.hero');
+    // --- Sticky Button Logic (This is the fix) ---
+    const ctaButton = document.querySelector('#sticky-cta'); 
+    const stopElement = document.querySelector('.cta-buttondev'); // Target the "DEVELOPER INFO" button
     
-    if (ctaButton && heroSection && header) {
-        const heroHeight = heroSection.offsetHeight;
-        const headerHeight = header.offsetHeight;
-        
-        if (window.scrollY > (heroHeight - headerHeight)) {
-            ctaButton.classList.add('cta-button-fixed');
-            ctaButton.style.top = `${headerHeight + 10}px`; 
+    if (ctaButton && stopElement) {
+        // Get the top position of the "DEVELOPER INFO" button
+        const stopElementTop = stopElement.offsetTop;
+        // Get the current bottom position of the screen
+        const scrollBottom = window.scrollY + window.innerHeight;
+        // Define a padding (so it stops *before* hitting the button)
+        const padding = 40; 
+
+        // This is the absolute 'top' CSS value where the button should stop
+        const stopPosition = stopElementTop - ctaButton.offsetHeight - padding;
+
+        // 1. Are we scrolled past the header?
+        if (window.scrollY > 100) {
+            
+            // 2. Are we still *above* the stop point?
+            // We check if the *viewport bottom* is above the *stop element's top*
+            if (scrollBottom < stopElementTop - padding) {
+                // YES: Be sticky (fixed)
+                ctaButton.classList.add('cta-button-fixed');
+                ctaButton.classList.remove('cta-button-stopped');
+                ctaButton.style.top = ''; // Clear inline style
+            } else {
+                // NO: We've hit the stop point. Stop being fixed.
+                ctaButton.classList.remove('cta-button-fixed');
+                ctaButton.classList.add('cta-button-stopped');
+                // Set its absolute top position to the calculated stop point
+                ctaButton.style.top = stopPosition + 'px';
+            }
+
         } else {
+            // We are at the very top of the page. Remove all special classes.
             ctaButton.classList.remove('cta-button-fixed');
-            ctaButton.style.top = ''; // Remove the inline style
+            ctaButton.classList.remove('cta-button-stopped');
+            ctaButton.style.top = ''; // Clear inline style
         }
     }
 });
 
+// --- Intersection Observer (No changes needed) ---
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
