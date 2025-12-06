@@ -640,7 +640,7 @@ body,
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 667px) {
 
     .nav-container {
         flex-direction: column;
@@ -667,7 +667,7 @@ body,
     }
 
     #tagline {
-        font-size: 20px;
+        font-size: 15px;
         text-align: center;
     }
 
@@ -676,12 +676,12 @@ body,
     }
 
     .hero {
-        padding: 220px 5% 60px;
+        padding: 250px 5% 60px;
         /* Increased top padding for mobile header */
     }
 
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 15px;
     }
 
     .hero p {
@@ -752,7 +752,7 @@ body,
 
 @media (max-width: 992px) {
     .hero h1 {
-        font-size: 3rem;
+        font-size: 30px;
     }
 
     .about-content {
@@ -767,6 +767,7 @@ html {
 
 /* Floating animation for hero */
 .hero-content {
+    font-size: small;
     /* animation: floating 3s ease-in-out infinite; <-- THIS IS THE FIX */
 }
 
