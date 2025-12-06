@@ -11,71 +11,86 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-document.querySelector('form')?.addEventListener('submit', function(e) {
+document.querySelector('form')?.addEventListener('submit', function (e) {
     e.preventDefault();
     alert('Thank you for your inquiry! We will contact you soon.');
     this.reset();
 });
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
-    
-    // --- Header Background Change (This is fine) ---
+
+    // --- Header Background Change ---
     if (window.scrollY > 100) {
-        header.style.background = 'linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%)';
+        header.style.background = 'linear-gradient(135deg, #32548ef4 0%, #0086d4f8 100%)';
     } else {
-        header.style.background = 'linear-gradient(135deg, #0800ff 0%, #6ad3e6 100%)';
+        header.style.background = 'linear-gradient(135deg, #32548ee2 0%, #0086d49f 100%)';
     }
 
-    // --- Sticky Button Logic (This is the fix) ---
-    const ctaButton = document.querySelector('#sticky-cta'); 
+    // --- Sticky Button Logic (Works for both Desktop and Mobile) ---
+    const ctaButton = document.querySelector('#sticky-cta');
     const stopElement = document.querySelector('.cta-buttondev'); // Target the "DEVELOPER INFO" button
-    
-    if (ctaButton && stopElement) {
+    const heroSection = document.querySelector('.hero'); // Get the hero section
+
+    if (ctaButton && stopElement && heroSection) {
+        // Check if we're on mobile
+        const isMobile = window.innerWidth <= 768;
+
+        // Get the bottom position of the hero section
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+
         // Get the top position of the "DEVELOPER INFO" button
         const stopElementTop = stopElement.offsetTop;
+
         // Get the current bottom position of the screen
         const scrollBottom = window.scrollY + window.innerHeight;
-        // Define a padding (so it stops *before* hitting the button)
-        const padding = 40; 
+
+        // Define padding based on device type
+        const padding = isMobile ? 80 : 40;
 
         // This is the absolute 'top' CSS value where the button should stop
         const stopPosition = stopElementTop - ctaButton.offsetHeight - padding;
 
-        // 1. Are we scrolled past the header?
-        if (window.scrollY > 100) {
-            
+        // Scroll threshold: on mobile, activate after scrolling past hero section
+        // On desktop, activate after scrolling 100px
+        const scrollThreshold = isMobile ? heroBottom - window.innerHeight / 2 : 100;
+
+        // 1. Are we scrolled past the threshold?
+        if (window.scrollY > scrollThreshold) {
+
             // 2. Are we still *above* the stop point?
-            // We check if the *viewport bottom* is above the *stop element's top*
             if (scrollBottom < stopElementTop - padding) {
-                // YES: Be sticky (fixed)
+                // YES: Be sticky (fixed at bottom)
                 ctaButton.classList.add('cta-button-fixed');
                 ctaButton.classList.remove('cta-button-stopped');
                 ctaButton.style.top = ''; // Clear inline style
+                ctaButton.style.position = 'fixed';
             } else {
                 // NO: We've hit the stop point. Stop being fixed.
                 ctaButton.classList.remove('cta-button-fixed');
                 ctaButton.classList.add('cta-button-stopped');
+                ctaButton.style.position = 'absolute';
                 // Set its absolute top position to the calculated stop point
                 ctaButton.style.top = stopPosition + 'px';
             }
 
         } else {
-            // We are at the very top of the page. Remove all special classes.
+            // We are at the top of the page. Button stays in hero section.
             ctaButton.classList.remove('cta-button-fixed');
             ctaButton.classList.remove('cta-button-stopped');
             ctaButton.style.top = ''; // Clear inline style
+            ctaButton.style.position = ''; // Clear inline position
         }
     }
 });
 
-// --- Intersection Observer (No changes needed) ---
+// --- Intersection Observer ---
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = new IntersectionObserver(function (entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
