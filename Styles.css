@@ -676,16 +676,16 @@ body,
     }
 
     .hero {
-        padding: 250px 5% 60px;
+        padding: 200px 5% 60px;
         /* Increased top padding for mobile header */
     }
 
     .hero h1 {
-        font-size: 15px;
+        font-size: 25px;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 20px;
     }
 
     /* Mobile button and card refinements */
@@ -757,6 +757,11 @@ body,
 
     .about-content {
         gap: 1.5rem;
+    }
+
+    .hero {
+        padding: 190px 5% 30px;
+        /* Increased top padding for mobile header */
     }
 }
 
