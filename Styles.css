@@ -10,7 +10,7 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: #e0e0e0;
-    background: linear-gradient(135deg, #6a6a6ae2 0%, #00b4d49f 100%);
+    background: linear-gradient(135deg, #6a6a6ae2 0%, #7c94ffbe 100%);
     overflow-x: hidden;
 }
 
@@ -45,8 +45,18 @@ body,
 }
 
 .header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     text-align: left;
     padding-top: 5px;
+    padding-left: 0;
+}
+
+.header-logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
 }
 
 .header-right {
@@ -104,7 +114,7 @@ body,
 
 .online-text {
     font-size: 0.6em;
-    color:yellow;
+    color: yellow;
     font-weight: normal;
     display: block;
     letter-spacing: 2px;
@@ -115,6 +125,11 @@ body,
     font-weight: bold;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+marquee {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .hero {
@@ -254,7 +269,7 @@ body,
 
 .cta-button,
 .cta-button1 {
-    background: linear-gradient(45deg, #00bcd4, #0066ff);
+    background: linear-gradient(135deg, #32548e 0%, #0086d4fe 100%);
     color: #ffffff;
     padding: 12px 28px;
     border: none;
@@ -310,7 +325,7 @@ body,
 }
 
 .cta-button1 {
-    background: linear-gradient(45deg, #410bf1, #1ecff7);
+    background: linear-gradient(135deg, #32548ee4 0%, #0086d4e6 100%);
     color: white;
     padding: 8px 20px;
     border: none;
@@ -331,7 +346,7 @@ body,
 }
 
 .cta-buttondev {
-    background: linear-gradient(45deg, #0bf1e9, #1e78f7);
+    background: linear-gradient(135deg, #32548ee4 0%, #0086d4e6 100%);
     color: white;
     padding: 8px 20px;
     border: none;
@@ -673,6 +688,10 @@ body,
 
     .phone-number {
         font-size: 14px;
+    }
+
+    .header-logo {
+        height: 50px;
     }
 
     .hero {
